@@ -25,7 +25,7 @@ const Header = () => {
                             <span className="nav-link"> Blog </span>
                         </Link>
                         <Link className="nav-item" to="/register">
-                            <Button>Register</Button>
+                            <Button className="rounded mr-3">Register</Button>
                         </Link>
                         <Link className="nav-item" to="/Admin">
                             <Button className="btn btn-dark">Admin</Button>

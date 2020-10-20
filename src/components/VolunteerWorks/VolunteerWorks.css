@@ -1,0 +1,21 @@
+.volunteer-work-item{
+    border: 1px solid black;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+.text-style{
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 1.1rem;
+}

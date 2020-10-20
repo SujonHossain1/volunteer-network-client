@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -6,14 +6,26 @@ import {
   Route
 } from 'react-router-dom';
 import Header from './components/Header/Header';
+import VolunteerWorks from './components/VolunteerWorks/VolunteerWorks';
+
+export const UserContext = createContext();
 
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState({
+    name: '',
+    email: '',
+    photo: '',
+    isSignIn: false,
+  })
   return (
-    <div className="App">
+    <UserContext.Provider>
       <Router>
-        <Header />
+        <header className="header-section">
+          <Header />
+          <VolunteerWorks />
+        </header>
       </Router>
-    </div>
+    </UserContext.Provider>
   );
 }
 
