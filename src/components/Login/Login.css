@@ -1,0 +1,19 @@
+.login-with {
+    border: 1px solid #ced4da;
+    border-radius: 25px;
+    padding: 8px 15px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.login-with:hover {
+    border: 1px solid #a2a7ac;
+}
+
+.login-with img {
+    width: 25px;
+    position: absolute;
+    left: 10px;
+    bottom: 6px;
+}

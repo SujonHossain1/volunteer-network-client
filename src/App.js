@@ -7,6 +7,9 @@ import {
 } from 'react-router-dom';
 import Header from './components/Header/Header';
 import VolunteerWorks from './components/VolunteerWorks/VolunteerWorks';
+import VolunteerForm from './components/VolunteerForm/VolunteerForm';
+import Login from './components/Login/Login';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 export const UserContext = createContext();
 
@@ -18,12 +21,26 @@ function App() {
     isSignIn: false,
   })
   return (
-    <UserContext.Provider>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
-        <header className="header-section">
-          <Header />
-          <VolunteerWorks />
-        </header>
+
+        <Switch>
+          <Route path="/" exact>
+            <header className="header-section">
+              <Header />
+              <VolunteerWorks />
+            </header>
+          </Route>
+
+          <Route path="/volunteer-work/:formId">
+            <VolunteerForm />
+          </Route>
+
+          <Route path="/login">
+            <Login />
+          </Route>
+        </Switch>
+
       </Router>
     </UserContext.Provider>
   );

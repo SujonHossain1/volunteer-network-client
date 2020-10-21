@@ -6,12 +6,17 @@ import './VolunteerWorks.css';
 
 const VolunteerWorks = () => {
     const [works, setWorks] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch('http://localhost:5000/workData')
             .then(res => res.json())
-            .then(data => setWorks(data))
+            .then(data => {
+                setWorks(data);
+                setLoading(false);
+            })
             .catch(err => console.log(err))
+
     }, [])
 
     console.log(works)
@@ -27,13 +32,19 @@ const VolunteerWorks = () => {
                             <Button className=" ml-n2">Search</Button>
                         </div>
                     </div>
-                    <Row>
+                    <Row className="no-gutters">
                         {
-                            works.splice(0, 20).map((workItem) =>
-                                <VolunteerWorkItem
-                                    workItem={workItem}
-                                    key={workItem._id}
-                                />)
+                            loading ? <div className="d-flex justify-content-center align-items-center h-100 w-100">
+                                <div class="spinner-border" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+                                :
+                                works.splice(0, 20).map((workItem) =>
+                                    <VolunteerWorkItem
+                                        workItem={workItem}
+                                        key={workItem._id}
+                                    />)
                         }
                     </Row>
                 </div>

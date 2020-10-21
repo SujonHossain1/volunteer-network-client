@@ -4,10 +4,10 @@ import './VolunteerWorkItem.css';
 import {Link} from 'react-router-dom';
 
 const VolunteerWorkItem = ({ workItem }) => {
-    const { id, name, img, color } = workItem;
+    const { _id, name, img, color } = workItem;
     return (
-        <Col xs="6" md="4" lg="3" className="mt-3">
-           <Link to={"/volunteer-work/" + id}>
+        <Col xs="6" md="4" lg="3" className="mt-3 px-2">
+           <Link to={"/volunteer-work/"+_id}>
            <div className="volunteer-work-item ">
                 <img className="img-fluid" src={img} alt={name}/>
                 <h5 style={{background: color}} className="text-style"> {name}</h5>
