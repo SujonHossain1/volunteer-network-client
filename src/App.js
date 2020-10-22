@@ -10,6 +10,7 @@ import VolunteerWorks from './components/VolunteerWorks/VolunteerWorks';
 import VolunteerForm from './components/VolunteerForm/VolunteerForm';
 import Login from './components/Login/Login';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import RegisterWorkshop from './components/RegisterWorkshop/RegisterWorkshop';
 
 export const UserContext = createContext();
 
@@ -32,10 +33,12 @@ function App() {
             </header>
           </Route>
 
-          <Route path="/volunteer-work/:formId">
+          <PrivateRoute path="/volunteer-work/:formId">
             <VolunteerForm />
+          </PrivateRoute>
+          <Route path="/register-workshop">
+            <RegisterWorkshop />
           </Route>
-
           <Route path="/login">
             <Login />
           </Route>

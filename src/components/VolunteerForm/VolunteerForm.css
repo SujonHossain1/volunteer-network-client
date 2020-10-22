@@ -17,3 +17,8 @@
     box-shadow: none !important;
     border-bottom: 1px solid rgb(141, 139, 139) !important;
 }
+
+.react-date-picker__wrapper {
+    border: none !important;
+    padding: 6px 0px;
+}

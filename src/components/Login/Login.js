@@ -3,22 +3,47 @@ import { Col, Container } from 'react-bootstrap';
 import './Login.css';
 import logo from '../../images/logo.png';
 import google from '../../images/google.png';
-import { useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import firebaseConfig from '../../firebase.config';
+import { useContext } from 'react';
+import { UserContext } from '../../App';
+
+firebase.initializeApp(firebaseConfig);
+
 
 const Login = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     const location = useLocation();
     const history = useHistory();
-
+    const googleProvider = new firebase.auth.GoogleAuthProvider();
     let { from } = location.state || { from: { pathname: "/" } };
 
     const signInGoogle = () => {
-        history.replace(from);
+        firebase.auth().signInWithPopup(googleProvider)
+            .then(res => {
+                const { displayName, email, photoURL } = res.user;
+                setLoggedInUser({
+                    name: displayName,
+                    email: email,
+                    photo: photoURL,
+                    isSignIn: true
+                })
+                history.replace(from)
+            }).catch((error) => {
+                var errorMessage = error.message;
+                console.log(errorMessage)
+            });
+
     }
 
     return (
         <Container>
             <figure style={{ textAlign: 'center' }} className="pt-5 pb-2">
-                <img style={{ width: "200px" }} src={logo} alt="" />
+                <Link to="/">
+                    <img style={{ width: "200px" }} src={logo} alt="" />
+                </Link>
             </figure>
 
             <Col md={6} className="mx-auto">

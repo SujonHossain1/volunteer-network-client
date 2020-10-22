@@ -35,8 +35,8 @@ const VolunteerWorks = () => {
                     <Row className="no-gutters">
                         {
                             loading ? <div className="d-flex justify-content-center align-items-center h-100 w-100">
-                                <div class="spinner-border" role="status">
-                                    <span class="sr-only">Loading...</span>
+                                <div className="spinner-border" role="status">
+                                    <span className="sr-only">Loading...</span>
                                 </div>
                             </div>
                                 :
