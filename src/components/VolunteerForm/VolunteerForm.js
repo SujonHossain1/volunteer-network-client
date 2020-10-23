@@ -54,6 +54,7 @@ const VolunteerForm = () => {
 
     return (
         <Container>
+            <img src={loggedInUser.photo} alt=""/>
             <div style={alertShow} className="alert alert-success w-25 mt-3 ml-auto" role="alert">
                 <h6>Register Successful</h6>
             </div>

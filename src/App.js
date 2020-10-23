@@ -21,6 +21,8 @@ function App() {
     photo: '',
     isSignIn: false,
   })
+
+
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
@@ -36,9 +38,9 @@ function App() {
           <PrivateRoute path="/volunteer-work/:formId">
             <VolunteerForm />
           </PrivateRoute>
-          <Route path="/register-workshop">
+          <PrivateRoute path="/register-workshop">
             <RegisterWorkshop />
-          </Route>
+          </PrivateRoute>
           <Route path="/login">
             <Login />
           </Route>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Col, Container } from 'react-bootstrap';
 import './Login.css';
 import logo from '../../images/logo.png';
@@ -20,16 +20,25 @@ const Login = () => {
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     let { from } = location.state || { from: { pathname: "/" } };
 
+    const setUserToken = () => {
+        firebase.auth().currentUser.getIdToken(true)
+            .then(function (idToken) {
+                sessionStorage.setItem('token', idToken);
+            }).catch(function (error) {
+                console.log(error);
+            });
+    }
     const signInGoogle = () => {
         firebase.auth().signInWithPopup(googleProvider)
             .then(res => {
                 const { displayName, email, photoURL } = res.user;
                 setLoggedInUser({
                     name: displayName,
-                    email: email,
                     photo: photoURL,
+                    email: email,
                     isSignIn: true
                 })
+                setUserToken();
                 history.replace(from)
             }).catch((error) => {
                 var errorMessage = error.message;
@@ -37,6 +46,9 @@ const Login = () => {
             });
 
     }
+
+  
+
 
     return (
         <Container>
