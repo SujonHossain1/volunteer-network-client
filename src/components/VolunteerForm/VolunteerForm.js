@@ -22,7 +22,7 @@ const VolunteerForm = () => {
         data.date = registerDate.toDateString();
         data.img = organization.img;
 
-        fetch('http://localhost:5000/register-works/', {
+        fetch('https://vol-network2.herokuapp.com/register-works/', {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -40,7 +40,7 @@ const VolunteerForm = () => {
     }
 
     useEffect(() => {
-        fetch('http://localhost:5000/volunteer-organization/' + formId)
+        fetch('https://vol-network2.herokuapp.com/volunteer-organization/' + formId)
             .then(res => res.json())
             .then(data => setOrganization(data))
     }, [formId]);

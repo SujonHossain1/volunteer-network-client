@@ -14,13 +14,13 @@ const Admin = () => {
     const [showAlert, setShowAlert] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/all-register-data')
+        fetch('https://vol-network2.herokuapp.com/all-register-data')
             .then(res => res.json())
             .then(data => setAllRegisterData(data))
     }, [deleteData, showAlert])
 
     const handleDeleteUser = (id) => {
-        fetch('http://localhost:5000/volunteer-organization-delete/' + id, {
+        fetch('https://vol-network2.herokuapp.com/volunteer-organization-delete/' + id, {
             method: 'DELETE'
         })
             .then(res => res.json())

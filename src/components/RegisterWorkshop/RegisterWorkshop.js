@@ -11,7 +11,7 @@ const RegisterWorkshop = () => {
     const [deleteWorkshop, setDeleteWorkshop] = useState();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/register-workshop?email=${loggedInUser.email}`, {
+        fetch(`https://vol-network2.herokuapp.com/register-workshop?email=${loggedInUser.email}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ const RegisterWorkshop = () => {
     }, [loggedInUser.email, deleteWorkshop])
 
     const workshopDeleteHandler = (id) => {
-        fetch('http://localhost:5000/volunteer-organization-delete/' + id, {
+        fetch('https://vol-network2.herokuapp.com/volunteer-organization-delete/' + id, {
             method: 'DELETE'
         })
         .then(res => res.json())

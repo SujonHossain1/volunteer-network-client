@@ -7,7 +7,7 @@ const PrivateRoute = ({ children, ...rest }) => {
 
     useEffect(() => {
         const token =  sessionStorage.getItem('token');
-        fetch(`http://localhost:5000/check-is-signUp`, {
+        fetch(`https://vol-network2.herokuapp.com/check-is-signUp`, {
             method: 'GET',
             headers: {
                 'Context-type': 'application/json',

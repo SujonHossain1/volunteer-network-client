@@ -9,7 +9,7 @@ const VolunteerWorks = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/workData')
+        fetch('https://vol-network2.herokuapp.com/workData')
             .then(res => res.json())
             .then(data => {
                 setWorks(data);

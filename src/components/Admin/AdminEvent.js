@@ -9,7 +9,7 @@ const AdminEvent = () => {
 
     const onSubmit = (data, event) => {
 
-        fetch('http://localhost:5000/register-works/', {
+        fetch('https://vol-network2.herokuapp.com/register-works/', {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
