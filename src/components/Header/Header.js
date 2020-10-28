@@ -25,10 +25,10 @@ const Header = () => {
                             <span className="nav-link"> Blog </span>
                         </Link>
                         <Link className="nav-item" to="/register-workshop">
-                            <Button className="rounded mr-3">Register</Button>
+                            <Button className="rounded mr-3 ">Register</Button>
                         </Link>
                         <Link className="nav-item" to="/Admin">
-                            <Button className="btn btn-dark">Admin</Button>
+                            <Button className="btn btn-dark mt-md-0 mt-3 ">Admin</Button>
                         </Link>
                     </Nav>
                 </Navbar.Collapse>

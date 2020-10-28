@@ -1,0 +1,11 @@
+.register-add p{
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+.register-add img{
+    width: 25px;
+    cursor: pointer;
+
+}

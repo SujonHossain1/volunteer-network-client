@@ -11,6 +11,7 @@ import VolunteerForm from './components/VolunteerForm/VolunteerForm';
 import Login from './components/Login/Login';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import RegisterWorkshop from './components/RegisterWorkshop/RegisterWorkshop';
+import Admin from './components/Admin/Admin';
 
 export const UserContext = createContext();
 
@@ -40,6 +41,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute path="/register-workshop">
             <RegisterWorkshop />
+          </PrivateRoute>
+          <PrivateRoute path="/admin">
+            <Admin />
           </PrivateRoute>
           <Route path="/login">
             <Login />

@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import './VolunteerForm.css';
 import { useContext } from 'react';
 import { UserContext } from '../../App';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import DatePicker from 'react-date-picker';
 
 const VolunteerForm = () => {
@@ -16,9 +16,12 @@ const VolunteerForm = () => {
     const [organization, setOrganization] = useState("");
 
     const [showAlert, setShowAlert] = useState(false);
+    const history = useHistory();
 
-    const onSubmit = (data, event) => {
-        data.date = registerDate;
+    const onSubmit = (data) => {
+        data.date = registerDate.toDateString();
+        data.img = organization.img;
+
         fetch('http://localhost:5000/register-works/', {
             method: "POST",
             body: JSON.stringify(data),
@@ -28,18 +31,21 @@ const VolunteerForm = () => {
         })
             .then(res => res.json())
             .then(() => {
-                setShowAlert(true);           
+                setShowAlert(true);
+                setTimeout(() => {
+                    history.replace('/register-workshop')
+                }, 1500);
             })
             .catch(err => console.log(err))
-
-     
     }
 
     useEffect(() => {
         fetch('http://localhost:5000/volunteer-organization/' + formId)
             .then(res => res.json())
             .then(data => setOrganization(data))
-    }, [formId])
+    }, [formId]);
+
+  
 
     let alertShow = {
         display: 'none',
@@ -54,7 +60,6 @@ const VolunteerForm = () => {
 
     return (
         <Container>
-            <img src={loggedInUser.photo} alt=""/>
             <div style={alertShow} className="alert alert-success w-25 mt-3 ml-auto" role="alert">
                 <h6>Register Successful</h6>
             </div>
